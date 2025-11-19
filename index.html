@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Obsidian Automotive - Dealer mobil premium Indonesia di bawah 800 juta. SUV keluarga modern, cicilan ringan, siap antar seluruh Indonesia.">
+    <meta name="keywords" content="mobil keluarga, suv premium, dealer mobil indonesia, cicilan mobil, mobil di bawah 800 juta">
+    <meta property="og:title" content="Obsidian Automotive - Dealer Mobil Premium Indonesia">
+    <meta property="og:description" content="Mobil keluarga premium dengan layanan concierge, cicilan fleksibel, dan dukungan aftersales.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://obsidian-auto.com/og-image.jpg">
+    <title>Obsidian Automotive - Mobil Premium Untuk Keluarga Indonesia</title>
+    
+    <!-- TailwindCSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js CDN -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Manrope', sans-serif;
+            background-color: #F8F7F3;
+            color: #1F1F1F;
+            overflow-x: hidden;
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #E4E1D6;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #C9B37C;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #B89C5E;
+        }
+        
+        /* Hero video background effect */
+        .hero-pattern {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(247,242,232,0.95) 0%, rgba(239,233,221,0.85) 45%, rgba(255,255,255,0.95) 100%), url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1600&q=60') center/cover;
+            filter: saturate(1.1);
+            z-index: 0;
+        }
+        
+        /* Animated border */
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        .shimmer-border {
+            background: linear-gradient(90deg, transparent, rgba(229,228,226,0.3), transparent);
+            background-size: 1000px 100%;
+            animation: shimmer 3s infinite;
+        }
+        
+        /* Fade in animation */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        /* Hover effects */
+        .hover-lift {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(36, 45, 67, 0.12);
+        }
+        
+        /* WhatsApp button pulse */
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .pulse-animation {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body x-data="{ 
+    mobileMenuOpen: false,
+    scrollY: 0
+}" 
+@scroll.window="scrollY = window.scrollY">
+    
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-[#E4E1D6]/80"
+         :class="{ 'bg-white shadow-lg border-[#E4E1D6]': scrollY > 20 }">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Brand -->
+                <div class="flex-shrink-0">
+                    <a href="#" class="font-display text-2xl font-semibold text-[#2F2A1F] tracking-[0.2em]">
+                        OBSIDIAN
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inventory" class="text-[#5C5040] hover:text-[#2F2A1F] transition-colors duration-300 text-sm font-medium tracking-wide">Pilihan Mobil</a>
+                    <a href="#benefits" class="text-[#5C5040] hover:text-[#2F2A1F] transition-colors duration-300 text-sm font-medium tracking-wide">Keunggulan</a>
+                    <a href="#financing" class="text-[#5C5040] hover:text-[#2F2A1F] transition-colors duration-300 text-sm font-medium tracking-wide">Simulasi</a>
+                    <a href="#contact" class="text-[#5C5040] hover:text-[#2F2A1F] transition-colors duration-300 text-sm font-medium tracking-wide">Hubungi Kami</a>
+                    <a href="https://wa.me/6281234567890?text=Halo%20Obsidian,%20saya%20ingin%20konsultasi%20mobil%20keluarga" target="_blank" class="bg-[#2F2A1F] text-white px-6 py-2.5 text-sm font-semibold tracking-wide hover:bg-[#443928] transition-colors duration-300 rounded-full">
+                        Konsultasi Gratis
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-[#2F2A1F]" aria-label="Toggle navigation">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenuOpen" 
+             x-transition:enter="transition ease-out duration-300"
+             x-transition:enter-start="opacity-0 -translate-y-4"
+             x-transition:enter-end="opacity-100 translate-y-0"
+             x-transition:leave="transition ease-in duration-200"
+             x-transition:leave-start="opacity-100 translate-y-0"
+             x-transition:leave-end="opacity-0 -translate-y-4"
+             class="md:hidden bg-white border-t border-[#E4E1D6] shadow-lg">
+            <div class="px-6 py-4 space-y-4">
+                <a href="#inventory" class="block text-[#5C5040] hover:text-[#2F2A1F] transition-colors">Pilihan Mobil</a>
+                <a href="#benefits" class="block text-[#5C5040] hover:text-[#2F2A1F] transition-colors">Keunggulan</a>
+                <a href="#financing" class="block text-[#5C5040] hover:text-[#2F2A1F] transition-colors">Simulasi</a>
+                <a href="#contact" class="block text-[#5C5040] hover:text-[#2F2A1F] transition-colors">Hubungi Kami</a>
+                <a href="https://wa.me/6281234567890?text=Halo%20Obsidian,%20saya%20ingin%20konsultasi%20mobil%20keluarga" target="_blank" class="block text-center bg-[#2F2A1F] text-white px-6 py-3 text-sm font-semibold rounded-full">Konsultasi Gratis</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-24">
+        <div class="hero-pattern"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-[#F8F3E7]/95 via-[#FDFBF6]/80 to-transparent"></div>
+        
+        <!-- Hero Content -->
+        <div class="relative z-20 max-w-7xl mx-auto px-6 lg:px-8 grid lg:grid-cols-2 gap-12 items-center">
+            <div class="fade-in-up">
+                <p class="uppercase tracking-[0.4em] text-xs text-[#B08B3A] mb-6">Dealer Mobil Premium Indonesia</p>
+                <h1 class="font-display text-4xl md:text-5xl lg:text-6xl font-semibold text-[#2F2A1F] mb-6 leading-tight">
+                    Mobil Premium Untuk <span class="text-[#B08B3A]">Keluarga Indonesia</span>
+                </h1>
+                <p class="text-lg text-[#4C4436] mb-8 leading-relaxed">
+                    Pilihan SUV & crossover terbaru dengan harga di bawah 800 juta. Gratis konsultasi pembiayaan, ready stock, dan dukungan aftersales lengkap.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#inventory" class="bg-[#2F2A1F] text-white px-8 py-4 text-sm font-semibold tracking-wide rounded-full hover:bg-[#443928] transition-all duration-300 hover-lift text-center">
+                        Lihat Pilihan Mobil
+                    </a>
+                    <a href="#financing" class="border border-[#2F2A1F] text-[#2F2A1F] px-8 py-4 text-sm font-semibold tracking-wide rounded-full hover:bg-[#2F2A1F] hover:text-white transition-all duration-300 text-center">
+                        Simulasi Cicilan
+                    </a>
+                </div>
+                
+                <div class="mt-10 grid grid-cols-3 gap-6 text-center">
+                    <div>
+                        <p class="text-3xl font-semibold text-[#2F2A1F]">72+</p>
+                        <p class="text-xs uppercase tracking-widest text-[#7A6F5E]">Unit Ready</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-semibold text-[#2F2A1F]">7 Kota</p>
+                        <p class="text-xs uppercase tracking-widest text-[#7A6F5E]">Jaringan Dealer</p>
+                    </div>
+                    <div>
+                        <p class="text-3xl font-semibold text-[#2F2A1F]">0%</p>
+                        <p class="text-xs uppercase tracking-widest text-[#7A6F5E]">DP Promo</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="relative hidden lg:block">
+                <div class="absolute -top-6 -left-6 w-24 h-24 border border-[#E4D3B0] rounded-full"></div>
+                <div class="absolute -bottom-6 -right-6 w-32 h-32 border-2 border-[#C9B37C]/60 rounded-3xl"></div>
+                <div class="bg-white/90 backdrop-blur-xl border border-[#E4E1D6] rounded-3xl p-6 shadow-xl relative hover-lift">
+                    <div class="rounded-2xl overflow-hidden mb-5">
+                        <img src="https://images.unsplash.com/photo-1619767886558-efdc259cde1a?auto=format&fit=crop&w=900&q=60" alt="SUV Premium" class="w-full h-64 object-cover">
+                    </div>
+                    <div class="flex items-center justify-between mb-3">
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.3em] text-[#B08B3A] mb-1">Best Seller</p>
+                            <h3 class="font-display text-2xl text-[#2F2A1F]">SUV Premium 2025</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-[#2F2A1F] bg-[#F2E8D5] px-3 py-1 rounded-full">Mulai 6 jt/bln</span>
+                    </div>
+                    <ul class="space-y-2 text-sm text-[#4C4436]">
+                        <li>✅ Garansi resmi 5 tahun</li>
+                        <li>✅ Free coating & kaca film premium</li>
+                        <li>✅ Proses kredit 24 jam</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center text-[#B08B3A]">
+            <span class="text-xs tracking-[0.5em] uppercase mb-2">Scroll</span>
+            <svg class="w-6 h-6 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- Featured Inventory Section -->
+    <section id="inventory" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="uppercase tracking-[0.4em] text-xs text-[#B08B3A] mb-4">Pilihan Terbaru</p>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-[#2F2A1F] mb-4">
+                    Rekomendasi <span class="text-[#B08B3A]">Unit di Bawah 800 JT</span>
+                </h2>
+                <p class="text-[#4C4436] text-lg max-w-3xl mx-auto">
+                    Semua unit termasuk garansi resmi, paket servis berkala, dan dukungan trade-in. Klik detail untuk simulasi cicilan personal.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Car 1: Toyota Fortuner GR Sport -->
+                <div class="group bg-[#FDFBF6] border border-[#E4E1D6] hover:border-[#C9B37C] transition-all duration-500 hover-lift rounded-3xl overflow-hidden">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=900&q=60" alt="Toyota Fortuner" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-white/90 text-[#2F2A1F] text-xs font-semibold px-3 py-1 rounded-full">Promo DP 15 JT</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3 class="font-display text-2xl text-[#2F2A1F] mb-1">Toyota Fortuner GR Sport</h3>
+                                <p class="text-sm text-[#7A6F5E]">2025 • Diesel • 7-Seater</p>
+                            </div>
+                            <span class="text-[#B08B3A] text-sm font-semibold bg-[#F2E8D5] px-3 py-1 rounded-full">Ready Stock</span>
+                        </div>
+                        <p class="text-[#4C4436] text-sm mb-4 leading-relaxed">
+                            2.8L Diesel • Toyota Safety Sense • Free servis 4 tahun
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-[#E4E1D6]">
+                            <div>
+                                <p class="text-xs text-[#7A6F5E] uppercase tracking-[0.3em] mb-1">Mulai dari</p>
+                                <span class="text-2xl font-semibold text-[#2F2A1F]">Rp735 jt</span>
+                                <p class="text-xs text-[#7A6F5E]">≈ 8,9 jt/bln</p>
+                            </div>
+                            <button class="text-[#2F2A1F] border border-[#2F2A1F] px-4 py-2 text-sm font-semibold rounded-full hover:bg-[#2F2A1F] hover:text-white transition-colors">
+                                Detail & Cicilan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Car 2: Honda CR-V RS e:HEV -->
+                <div class="group bg-[#FDFBF6] border border-[#E4E1D6] hover:border-[#C9B37C] transition-all duration-500 hover-lift rounded-3xl overflow-hidden">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=900&q=60" alt="Honda CR-V" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-white/90 text-[#2F2A1F] text-xs font-semibold px-3 py-1 rounded-full">Hybrid</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3 class="font-display text-2xl text-[#2F2A1F] mb-1">Honda CR-V RS e:HEV</h3>
+                                <p class="text-sm text-[#7A6F5E]">2024 • Hybrid • Honda Sensing</p>
+                            </div>
+                            <span class="text-[#B08B3A] text-sm font-semibold bg-[#F2E8D5] px-3 py-1 rounded-full">Terpopuler</span>
+                        </div>
+                        <p class="text-[#4C4436] text-sm mb-4 leading-relaxed">
+                            Dual motor hybrid • Panoramic sunroof • Honda Connect
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-[#E4E1D6]">
+                            <div>
+                                <p class="text-xs text-[#7A6F5E] uppercase tracking-[0.3em] mb-1">Mulai dari</p>
+                                <span class="text-2xl font-semibold text-[#2F2A1F]">Rp799 jt</span>
+                                <p class="text-xs text-[#7A6F5E]">≈ 9,5 jt/bln</p>
+                            </div>
+                            <button class="text-[#2F2A1F] border border-[#2F2A1F] px-4 py-2 text-sm font-semibold rounded-full hover:bg-[#2F2A1F] hover:text-white transition-colors">
+                                Detail & Cicilan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Car 3: Hyundai Ioniq 5 Signature -->
+                <div class="group bg-[#FDFBF6] border border-[#E4E1D6] hover:border-[#C9B37C] transition-all duration-500 hover-lift rounded-3xl overflow-hidden">
+                    <div class="relative h-56 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=900&q=60" alt="Hyundai Ioniq 5" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-white/90 text-[#2F2A1F] text-xs font-semibold px-3 py-1 rounded-full">Full Electric</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-start justify-between mb-3">
+                            <div>
+                                <h3 class="font-display text-2xl text-[#2F2A1F] mb-1">Hyundai Ioniq 5 Signature</h3>
+                                <p class="text-sm text-[#7A6F5E]">2024 • EV • 72.6 kWh</p>
+                            </div>
+                            <span class="text-[#B08B3A] text-sm font-semibold bg-[#F2E8D5] px-3 py-1 rounded-full">Bonus Home Charger</span>
+                        </div>
+                        <p class="text-[#4C4436] text-sm mb-4 leading-relaxed">
+                            481 km WLTP • Interior premium • 18" aero wheel
+                        </p>
+                        <div class="flex items-center justify-between pt-4 border-t border-[#E4E1D6]">
+                            <div>
+                                <p class="text-xs text-[#7A6F5E] uppercase tracking-[0.3em] mb-1">Mulai dari</p>
+                                <span class="text-2xl font-semibold text-[#2F2A1F]">Rp765 jt</span>
+                                <p class="text-xs text-[#7A6F5E]">≈ 8,4 jt/bln</p>
+                            </div>
+                            <button class="text-[#2F2A1F] border border-[#2F2A1F] px-4 py-2 text-sm font-semibold rounded-full hover:bg-[#2F2A1F] hover:text-white transition-colors">
+                                Detail & Cicilan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-24 bg-[#F8F3E7]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <p class="uppercase tracking-[0.4em] text-xs text-[#B08B3A] mb-4">Kenapa Obsidian</p>
+                <h2 class="font-display text-4xl md:text-5xl font-bold text-[#2F2A1F] mb-4">
+                    Layanan Lengkap Untuk Pembeli <span class="text-[#B08B3A]">Indonesia</span>
+                </h2>
+                <p class="text-[#4C4436] text-lg max-w-3xl mx-auto">
+                    Tim concierge kami siap membantu dari proses pilih mobil, simulasi kredit, hingga pengantaran unit ke rumah Anda.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="bg-white border border-[#E4E1D6] rounded-3xl p-8 hover:border-[#C9B37C] transition-all duration-300 hover-lift">
+                    <div class="w-14 h-14 bg-[#F2E8D5] rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-[#B08B3A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 21h10a4 4 0 004-4V7a4 4 0 00-4-4H7a4 4 0 00-4 4v10a4 4 0 004 4z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-2xl text-[#2F2A1F] mb-3">Concierge 1-on-1</h3>
+                    <p class="text-[#4C4436] leading-relaxed">
+                        Konsultasi via WhatsApp atau kunjungan showroom dengan personal advisor yang memahami kebutuhan keluarga Indonesia.
+                    </p>
+                </div>
+                
+                <div class="bg-white border border-[#E4E1D6] rounded-3xl p-8 hover:border-[#C9B37C] transition-all duration-300 hover-lift">
+                    <div class="w-14 h-14 bg-[#F2E8D5] rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-[#B08B3A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-2xl text-[#2F2A1F] mb-3">Cicilan Fleksibel</h3>
+                    <p class="text-[#4C4436] leading-relaxed">
+                        Kerja sama dengan 12 bank & leasing. DP mulai 15 juta dengan tenor sampai 7 tahun plus promo bunga spesial.
+                    </p>
+                </div>
+                
+                <div class="bg-white border border-[#E4E1D6] rounded-3xl p-8 hover:border-[#C9B37C] transition-all duration-300 hover-lift">
+                    <div class="w-14 h-14 bg-[#F2E8D5] rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-[#B08B3A]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="font-display text-2xl text-[#2F2A1F] mb-3">Aftersales Terjamin</h3>
+                    <p class="text-[#4C4436] leading-relaxed">
+                        Free home service pertama, layanan pick-up servis, dan pengingat servis otomatis melalui aplikasi WhatsApp bot kami.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Financing Section -->
+    <section id="financing" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center mb-16">
+                <div>
+                    <p class="uppercase tracking-[0.4em] text-xs text-[#B08B3A] mb-4">Simulasi Cicilan</p>
+                    <h2 class="font-display text-4xl font-bold text-[#2F2A1F] mb-4">Pilih Skema Pembayaran Sesuai Budget</h2>
+                    <p class="text-[#4C4436] text-lg mb-6">
+                        Kami bantu siapkan simulasi kredit dengan DP ringan, tenor fleksibel, dan program trade-in untuk memudahkan upgrade kendaraan.
+                    </p>
+                    <ul class="space-y-3 text-[#4C4436]">
+                        <li>✅ Kerja sama dengan BCA Finance, Mandiri Tunas, Adira, dan lainnya</li>
+                        <li>✅ Persetujuan cepat & proses digital (e-sign)</li>
+                        <li>✅ Ada opsi syariah & balloon payment</li>
+                    </ul>
+                </div>
+                <div class="bg-[#F8F3E7] border border-[#E4E1D6] rounded-3xl p-8 shadow-lg hover-lift">
+                    <div class="flex items-center justify-between mb-8">
+                        <div>
+                            <p class="text-xs uppercase tracking-[0.3em] text-[#7A6F5E] mb-1">Contoh Unit</p>
+                            <h3 class="font-display text-3xl text-[#2F2A1F]">Honda CR-V RS e:HEV</h3>
+                        </div>
+                        <span class="text-sm font-semibold text-[#2F2A1F] bg-white px-4 py-2 rounded-full">OTR 799 jt</span>
+                    </div>
+                    <div class="grid sm:grid-cols-3 gap-4">
+                        <div class="bg-white rounded-2xl p-4 border border-[#E4E1D6]">
+                            <p class="text-xs text-[#7A6F5E] uppercase tracking-[0.3em] mb-1">DP</p>
+                            <p class="text-2xl font-semibold text-[#2F2A1F]">Rp80 jt</p>
+                            <p class="text-xs text-[#7A6F5E]">10% + admin</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-4 border border-[#E4E1D6]">
+                            <p class="text-xs text-[#7A6F5E] uppercase tracking-[0.3em] mb-1">Tenor</p>
+                            <p class="text-2xl font-semibold text-[#2F2A1F]">5 Tahun</p>
+                            <p class="text-xs text-[#7A6F5E]">Bunga flat 3.1%</p>
+                        </div>
+                        <div class="bg-white rounded-2xl p-4 border border-[#E4E1D6]">
+                            <p class="text-xs text-[#7A6F5E] uppercase tracking-[0.3em] mb-1">Cicilan</p>
+                            <p class="text-2xl font-semibold text-[#2F2A1F]">Rp11,2 jt</p>
+                            <p class="text-xs text-[#7A6F5E]">per bulan</p>
+                        </div>
+                    </div>
+                    <div class="mt-8 bg-white rounded-2xl p-4 border border-dashed border-[#E4E1D6] text-sm text-[#4C4436]">
+                        *Simulasi dapat berubah sesuai bank/leasing. Hubungi kami untuk mendapatkan penawaran terbaik hari ini.
+                    </div>
+                    <div class="mt-6 flex flex-col sm:flex-row gap-4">
+                        <a href="https://wa.me/6281234567890?text=Halo%20Obsidian,%20tolong%20buatkan%20simulasi%20cicilan%20Honda%20CR-V%20RS%20ya" target="_blank" class="flex-1 bg-[#2F2A1F] text-white text-center py-3 rounded-full text-sm font-semibold hover:bg-[#443928] transition-colors">
+                            Request Simulasi
+                        </a>
+                        <button class="flex-1 border border-[#2F2A1F] text-[#2F2A1F] py-3 rounded-full text-sm font-semibold hover:bg-[#2F2A1F] hover:text-white transition-colors">
+                            Download Brosur
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Location & Contact Section -->
+    <section id="contact" class="py-24 bg-[#F8F7F3]">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12">
+                <div>
+                    <p class="uppercase tracking-[0.4em] text-xs text-[#B08B3A] mb-4">Showroom & Test Drive</p>
+                    <h2 class="font-display text-4xl font-bold text-[#2F2A1F] mb-4">
+                        Jadwalkan Kunjungan <span class="text-[#B08B3A]">di Kota Anda</span>
+                    </h2>
+                    <p class="text-[#4C4436] text-lg mb-6">
+                        Kami hadir di kota-kota besar untuk memudahkan test drive dan pengurusan dokumen. Booking jadwal melalui concierge kami.
+                    </p>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F2E8D5] flex items-center justify-center text-[#B08B3A] font-semibold">JKT</div>
+                            <div>
+                                <h3 class="font-display text-xl text-[#2F2A1F]">Jakarta</h3>
+                                <p class="text-sm text-[#4C4436]">Mega Kuningan, South Jakarta</p>
+                                <p class="text-sm text-[#7A6F5E]">Senin - Minggu | 10.00 - 20.00</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F2E8D5] flex items-center justify-center text-[#B08B3A] font-semibold">BDG</div>
+                            <div>
+                                <h3 class="font-display text-xl text-[#2F2A1F]">Bandung</h3>
+                                <p class="text-sm text-[#4C4436]">Jl. RE Martadinata No. 12</p>
+                                <p class="text-sm text-[#7A6F5E]">Rabu - Minggu | 11.00 - 19.00</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-2xl bg-[#F2E8D5] flex items-center justify-center text-[#B08B3A] font-semibold">SBY</div>
+                            <div>
+                                <h3 class="font-display text-xl text-[#2F2A1F]">Surabaya</h3>
+                            <p class="text-sm text-[#4C4436]">Pakuwon Mall, Ground Floor</p>
+                                <p class="text-sm text-[#7A6F5E]">Kamis - Minggu | 11.00 - 19.00</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-white border border-[#E4E1D6] rounded-3xl p-6 shadow-sm">
+                        <p class="text-sm uppercase tracking-[0.3em] text-[#7A6F5E] mb-2">Hubungi Kami</p>
+                        <p class="text-2xl font-semibold text-[#2F2A1F] mb-4">vip@obsidian-auto.com</p>
+                        <p class="text-[#4C4436] mb-4">Tim concierge akan membalas dalam 15 menit selama jam kerja.</p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://wa.me/6281234567890?text=Halo%20Obsidian,%20saya%20ingin%20booking%20test%20drive" target="_blank" class="flex-1 bg-[#2F2A1F] text-white text-center py-3 rounded-full text-sm font-semibold hover:bg-[#443928] transition-colors">
+                                WhatsApp Concierge
+                            </a>
+                            <a href="tel:+622112345678" class="flex-1 border border-[#2F2A1F] text-[#2F2A1F] text-center py-3 rounded-full text-sm font-semibold hover:bg-[#2F2A1F] hover:text-white transition-colors">
+                                021-123-45678
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="relative w-full h-80 rounded-3xl overflow-hidden border border-[#E4E1D6] shadow-lg">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3107689598564!2d106.82496427574533!3d-6.217071060870081!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f3f10a8f5859%3A0x1c9ff35f7d3c2df0!2sMega%20Kuningan!5e0!3m2!1sid!2sid!4v1700000000000"
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                    <div class="bg-white border border-[#E4E1D6] rounded-3xl p-6 shadow-sm">
+                        <h3 class="font-display text-2xl text-[#2F2A1F] mb-2">Butuh Offline Event?</h3>
+                        <p class="text-[#4C4436] mb-4">Kami sediakan private lounge untuk launching produk, test drive tertutup, hingga konsultasi fleet perusahaan.</p>
+                        <button class="bg-[#2F2A1F] text-white px-6 py-3 rounded-full text-sm font-semibold hover:bg-[#443928] transition-colors">
+                            Ajukan Jadwal Private
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t border-[#E4E1D6] py-12">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="font-display text-2xl font-bold text-[#2F2A1F] mb-4">OBSIDIAN</h3>
+                    <p class="text-[#4C4436] text-sm leading-relaxed">
+                        Dealer mobil premium untuk keluarga modern di Indonesia. Fokus pada pelayanan hangat, proses cepat, dan unit terkurasi.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-[#2F2A1F] font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#inventory" class="text-[#4C4436] hover:text-[#2F2A1F] transition-colors text-sm">Pilihan Mobil</a></li>
+                        <li><a href="#benefits" class="text-[#4C4436] hover:text-[#2F2A1F] transition-colors text-sm">Keunggulan</a></li>
+                        <li><a href="#financing" class="text-[#4C4436] hover:text-[#2F2A1F] transition-colors text-sm">Simulasi Cicilan</a></li>
+                        <li><a href="#contact" class="text-[#4C4436] hover:text-[#2F2A1F] transition-colors text-sm">Hubungi Kami</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-[#2F2A1F] font-semibold mb-4">Stay Updated</h4>
+                    <p class="text-[#4C4436] text-sm mb-4">Dapatkan info promo terbatas dan slot test drive terlebih dahulu.</p>
+                    <form class="flex gap-2">
+                        <input type="email" placeholder="Email Anda" class="flex-1 border border-[#E4E1D6] rounded-full px-4 py-2 text-sm bg-[#F8F7F3] focus:outline-none focus:border-[#C9B37C]" />
+                        <button type="submit" class="bg-[#2F2A1F] text-white px-4 py-2 rounded-full text-sm font-semibold hover:bg-[#443928] transition-colors">Kirim</button>
+                    </form>
+                </div>
+            </div>
+            <div class="border-t border-[#E4E1D6] pt-8 text-center">
+                <p class="text-[#7A6F5E] text-sm">
+                    © 2024 Obsidian Automotive. Serving Indonesia with passion.
+                </p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/6281234567890?text=Halo%20Obsidian,%20saya%20ingin%20info%20mobil%20premium%20di%20bawah%20800%20juta" 
+       target="_blank"
+       class="fixed bottom-8 right-8 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#20BA5A] transition-all duration-300 pulse-animation hover-lift">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+    
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
